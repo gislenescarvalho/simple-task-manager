@@ -1,4 +1,4 @@
-#Simple Task Management System
+##Simple Task Management System
 
 Simple personal task manager developed with React, using Axios for API integrations and
 the {JSON} Placeholder for free fake and reliable API for testing and prototyping.
@@ -16,11 +16,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 
