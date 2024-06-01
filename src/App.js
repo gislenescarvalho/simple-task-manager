@@ -1,25 +1,43 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+import TaskList from './components/TaskList';
+import TaskForm from './components/TaskForm';
 import './App.css';
+import { getTodosInfo } from './services/todosAPI';
 
-function App() {
+const App = () => {
+  const [tasks, setTasks] = useState([]);
+  const [taskToEdit, setTaskToEdit] = useState(null);
+
+  useEffect(() => {
+    getTodosInfo()
+      .then(response => setTasks(response.data.slice(0, 20))) // Limit to 20 tasks for tests
+      .catch(error => console.error('Error fetching tasks:', error));
+  }, []);
+
+  const handleAddTask = (task) => {
+    setTasks([...tasks, { ...task, id: tasks.length + 1 }]); // Mock ID for new tasks
+  };
+
+  const handleEditTask = (updatedTask) => {
+    setTasks(tasks.map(task => task.id === updatedTask.id ? updatedTask : task));
+    setTaskToEdit(null);
+  };
+
+  const handleDeleteTask = (taskId) => {
+    setTasks(tasks.filter(task => task.id !== taskId));
+  };
+
+  const handleSaveTask = (task) => {
+    taskToEdit ? handleEditTask(task) : handleAddTask(task);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Simple Task Manager</h1>
+      <TaskForm onSave={handleSaveTask} taskToEdit={taskToEdit} />
+      <TaskList tasks={tasks} onDelete={handleDeleteTask} onEdit={setTaskToEdit} />
     </div>
   );
-}
+};
 
 export default App;

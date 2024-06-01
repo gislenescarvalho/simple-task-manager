@@ -1,8 +1,11 @@
-# Getting Started with Create React App
+#Simple Task Management System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Simple personal task manager developed with React, using Axios for API integrations and
+the {JSON} Placeholder for free fake and reliable API for testing and prototyping.
 
-## Available Scripts
+It's created by Create React App, so you need to install the project dependencies with:
+
+### `npm install` or `npm i`
 
 In the project directory, you can run:
 
