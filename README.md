@@ -1,4 +1,4 @@
-##Simple Task Management System
+### Simple Task Management System
 
 Simple personal task manager developed with React, using Axios for API integrations and
 the {JSON} Placeholder for free fake and reliable API for testing and prototyping.
