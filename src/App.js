@@ -15,7 +15,8 @@ const App = () => {
   }, []);
 
   const handleAddTask = (task) => {
-    setTasks([...tasks, { ...task, id: tasks.length + 1 }]); // Mock ID for new tasks
+    const maxId = tasks.reduce((max, t) => (t.id > max ? t.id : max), 0);
+    setTasks([...tasks, { ...task, id: maxId + 1 }]); // Ensure unique ID
   };
 
   const handleEditTask = (updatedTask) => {
