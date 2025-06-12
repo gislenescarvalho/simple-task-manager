@@ -30,6 +30,11 @@ button {
   border-radius: 20px;
 }
 
+.error-message {
+  color: red;
+  margin-bottom: 10px;
+}
+
 .task-item {
   display: flex;
   justify-content: space-between;
