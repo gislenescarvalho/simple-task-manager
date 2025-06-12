@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 const TaskForm = ({ onSave, taskToEdit }) => {
   const [title, setTitle] = useState('');
+  const [error, setError] = useState('');
 
   useEffect(() => {
     if (taskToEdit) {
@@ -12,11 +13,12 @@ const TaskForm = ({ onSave, taskToEdit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (title.trim() === '') {
-      alert('Title is required');
+      setError('Title is required');
       return;
     }
     onSave({ ...taskToEdit, title });
     setTitle('');
+    setError('');
   };
 
   return (
@@ -24,9 +26,13 @@ const TaskForm = ({ onSave, taskToEdit }) => {
       <input
         type="text"
         value={title}
-        onChange={(e) => setTitle(e.target.value)}
+        onChange={(e) => {
+          setTitle(e.target.value);
+          if (error) setError('');
+        }}
         placeholder="Enter task title"
       />
+      {error && <div className="error-message">{error}</div>}
       <button type="submit">{taskToEdit ? 'Update' : 'Add'} Task</button>
     </form>
   );
