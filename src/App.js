@@ -7,11 +7,15 @@ import { getTodosInfo } from './services/todosAPI';
 const App = () => {
   const [tasks, setTasks] = useState([]);
   const [taskToEdit, setTaskToEdit] = useState(null);
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     getTodosInfo()
       .then(response => setTasks(response.data.slice(0, 20))) // Limit to 20 tasks for tests
-      .catch(error => console.error('Error fetching tasks:', error));
+      .catch(error => {
+        console.error('Error fetching tasks:', error);
+        setErrorMessage('Failed to load tasks');
+      });
   }, []);
 
   const handleAddTask = (task) => {
@@ -35,6 +39,7 @@ const App = () => {
   return (
     <div className="App">
       <h1>Simple Task Manager</h1>
+      {errorMessage && <div className="error-message" role="alert">{errorMessage}</div>}
       <TaskForm onSave={handleSaveTask} taskToEdit={taskToEdit} />
       <TaskList tasks={tasks} onDelete={handleDeleteTask} onEdit={setTaskToEdit} />
     </div>
