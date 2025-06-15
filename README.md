@@ -1,72 +1,59 @@
-### Simple Task Management System
+# Simple Task Manager
 
-Simple personal task manager developed with React, using Axios for API integrations and
-the {JSON} Placeholder for free fake and reliable API for testing and prototyping.
+This project is a small React application that lets you manage a list of tasks. It pulls an initial list of todos from the [JSONPlaceholder](https://jsonplaceholder.typicode.com/) API and lets you add, edit and delete them locally.
 
-It's created by Create React App, so you need to install the project dependencies with:
+## Getting started
 
-### `npm install` or `npm i`
+Install the dependencies:
 
-In the project directory, you can run:
+```bash
+npm install
+```
 
-### `npm start`
+Run the development server:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+npm start
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Open <http://localhost:3000> to view the app in your browser. The page will reload when you make changes.
 
-### `npm test`
+## Running tests
 
-Run tests
+Execute the unit tests in continuous integration mode:
 
-### `npm run build`
+```bash
+CI=true npm test --silent
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Project structure
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+.
+├── public/                 # Static assets and index.html
+└── src/
+    ├── components/         # Reusable React components
+    │   ├── TaskForm.js
+    │   ├── TaskItem.js
+    │   ├── TaskItem.test.js
+    │   └── TaskList.js
+    ├── services/           # Axios configuration and API helpers
+    │   ├── axiosFactory.js
+    │   └── todosAPI.js
+    ├── App.js
+    ├── App.css
+    ├── App.test.js
+    ├── index.js
+    ├── index.css
+    ├── reportWebVitals.js
+    └── setupTests.js
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## What to explore next
 
-### `npm run eject`
+- Learn more about React hooks such as `useState` and `useEffect` used throughout the components.
+- Review the Axios interceptor pattern in `src/services/axiosFactory.js` if you plan to extend API interactions.
+- Implement persistent storage or a backend if you want tasks to survive a page refresh.
+- Expand the tests to cover more scenarios using React Testing Library.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This repository is a simple starter project for practising React basics, API requests and testing.
